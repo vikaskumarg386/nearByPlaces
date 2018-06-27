@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+    <item
+        android:id="@+id/restaurent"
+        android:enabled="true"
+        android:icon="@drawable/ic_restaurant_black_24dp"
+        android:title="Restaurant"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/school"
+        android:enabled="true"
+        android:icon="@drawable/ic_school_black_24dp"
+        android:title="School"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/hotel"
+        android:enabled="true"
+        android:icon="@drawable/ic_hotel_black_24dp"
+        android:title="Hotel"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/hospitle"
+        android:enabled="true"
+        android:icon="@drawable/ic_local_hospital_black_24dp"
+        android:title="Hospital"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/tample"
+        android:enabled="true"
+        android:icon="@drawable/temple"
+        android:title="Temple"
+        app:showAsAction="ifRoom" />
+</menu>
