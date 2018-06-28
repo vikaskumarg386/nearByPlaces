@@ -7,6 +7,7 @@ import android.location.Geocoder;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -15,6 +16,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+
 
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
@@ -45,12 +47,18 @@ public class MainActivity extends AppCompatActivity {
     private TextView closingHr;
     private TextView place_address;
     private RatingBar ratingBar;
+    private Toolbar toolbar;
 
     MyPlaceDetail detail;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        toolbar=findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowCustomEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
         service=Common.getGoogleService();
@@ -61,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         placeName=findViewById(R.id.placeName);
 
 
-        button=findViewById(R.id.button);
+
         imageView=findViewById(R.id.imageView);
         ProgressDialog dialog=new ProgressDialog(MainActivity.this);
         dialog.setMessage("wait");
@@ -80,12 +88,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-            }
-        });
         if(Common.currentResult.getRating()!=null&&!TextUtils.isEmpty(Common.currentResult.getRating())){
             ratingBar.setRating(Float.parseFloat(Common.currentResult.getRating()));
         }
@@ -103,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
 
                 detail=response.body();
                 placeName.setText(detail.getResult().getName());
+                getSupportActionBar().setTitle(detail.getResult().getName());
                 place_address.setText(detail.getResult().getFormatted_address());
 
             }
